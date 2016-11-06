@@ -2,6 +2,8 @@
 	Array gates
 ]]
 
+loadedGate("Array")
+
 GateActions("Array")
 
 GateActions["array_length"] = {
@@ -64,8 +66,8 @@ GateActions["array_composer"] = {
 	inputtypes = { "NORMAL" , "NORMAL" , "NORMAL" },
 	outputtypes = { "ARRAY" },
 	output = function(gate, A, Clk, Reset)
-		local clk = Clk > 0
-		local reset = Reset > 0
+		local clk = (Clk > 0)
+		local reset = (Reset > 0)
 
 		if gate.PrevValue != clk then
 			gate.PrevValue = clk
@@ -88,7 +90,7 @@ GateActions["array_composer"] = {
 		return gate.Memory
 	end,
 	label = function(Out, A, Clk, Reset)
-		return string.format("Array insert(%s) = length(%s)", A, #Out)"
+		return string.format("Array insert(%s)", A)
 	end
 }
 
@@ -122,7 +124,7 @@ GateActions["array_composer_string"] = {
 		return gate.Memory
 	end,
 	label = function(Out, A, Clk, Reset)
-		return string.format("Array insert(\"%s\") = length(%s)", A, #Out)
+		return string.format("Array insert(\"%s\")", A)
 	end
 }
 
@@ -156,7 +158,7 @@ GateActions["array_composer_vector"] = {
 		return gate.Memory
 	end,
 	label = function(Out, A, Clk, Reset)
-		return string.format("Array insert(%s,%s,%s) = length(%s)", A.x, A.y, A.z, #Out)
+		return string.format("Array insert(%s,%s,%s)", A.x, A.y, A.z)
 	end
 }
 
@@ -190,7 +192,7 @@ GateActions["array_composer_angle"] = {
 		return gate.Memory
 	end,
 	label = function(Out, A, Clk, Reset)
-		return string.format("Array insert(%s,%s,%s) = length(%s)", A.p, A.y, A.r, #Out)
+		return string.format("Array insert(%s,%s,%s)", A.p, A.y, A.r)
 	end
 }
 
@@ -224,7 +226,7 @@ GateActions["array_composer_entity"] = {
 		return gate.Memory
 	end,
 	label = function(Out, A, Clk, Reset)
-		return string.format("Array insert(%s) = length(%s)", A, #Out)"
+		return string.format("Array insert(%s)", A)
 	end
 }
 
@@ -258,7 +260,7 @@ GateActions["array_composer_ranger"] = {
 		return gate.Memory
 	end,
 	label = function(Out, A, Clk, Reset)
-		return string.format("Array insert(%s) = length(%s)", A, #Out)"
+		return string.format("Array insert(%s)", A)
 	end
 }
 
@@ -292,7 +294,7 @@ GateActions["array_composer_array"] = {
 		return gate.Memory
 	end,
 	label = function(Out, A, Clk, Reset)
-		return string.format("Array insert(%s) = length(%s)", A, #Out)"
+		return string.format("Array insert(%s)", A)
 	end
 }
 
