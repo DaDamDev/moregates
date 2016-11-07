@@ -2,7 +2,7 @@
 	Array gates
 ]]
 
-loadedGate("Array")
+moregates.load("Array")
 
 GateActions("Array")
 
@@ -41,17 +41,17 @@ GateActions["array_slice"] = {
 	outputtypes = { "ARRAY" },
 	output = function(gate, A, B, C)
 		local tbl = {}
-		
+
 		if A and B and C then
 			B = math.Clamp(B, 1, #A)
 			C = math.Clamp(C, 1, #A)
-			
+
 			for i = B, C, 1 do
 				table.insert(tbl, A[i])
 				print("for: "..i)
 			end
 		end
-		
+
 		return tbl
 	end,
 	label = function(Out, A, B, C)
