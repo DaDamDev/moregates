@@ -2,7 +2,10 @@ moregates = {}
 moregates.loaded = {}
 
 function moregates.printLoaded()
-	print("+--------------------+\n|     More Gates     |\n|    Loaded Gates    |\n+--------------------+")
+	print("+--------------------+")
+	print("|     More Gates     |")
+	print("|    Loaded Gates    |")
+	print("+--------------------+")
 
 	for k, v in pairs(loadedGates) do
 		local spaces = ""
