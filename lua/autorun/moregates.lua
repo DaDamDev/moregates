@@ -8,7 +8,7 @@ function moregates.printLoaded()
 	print("+--------------------+")
 
 	for k, v in pairs(moregates.loaded) do
-		print("| "..k..string.rep(19 - #k).."|")
+		print("| "..k..string.rep(" ", 19 - #k).."|")
 	end
 
 	print("+--------------------+")
