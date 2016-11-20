@@ -193,26 +193,30 @@ function ENT:ReadCell( Address )
 end
 
 function ENT:ResetValues()
-	local value
-	
-	if self.InputType == "STRING" then
-		value = ""
-	elseif self.InputType == "VECTOR" then
-		value = Vector(0, 0, 0)
-	elseif self.InputType == "ANGLE" then
-		value = Angle(0, 0, 0)
-	elseif self.InputType == "ENTITY" then
-		value = nil
-	elseif self.InputType == "NORMAL" then
-		value = 0
+	if self.InputType != "NORMAL" then
+		local value
+		
+		if self.InputType == "STRING" then
+			value = ""
+		elseif self.InputType == "VECTOR" then
+			value = Vector(0, 0, 0)
+		elseif self.InputType == "ANGLE" then
+			value = Angle(0, 0, 0)
+		elseif self.InputType == "ENTITY" then
+			value = nil
+		elseif self.InputType == "NORMAL" then
+			value = 0
+		else
+			value = {}
+		end
+		
+		WireLib.TriggerOutput( self, "Out", value )
 	else
-		value = {}
+		for i = 1, #LETTERS do
+			WireLib.TriggerOutput( self, LETTERS[i], 0 )
+		end
 	end
-	
-	for i = 1, #LETTERS do
-		WireLib.TriggerOutput( self, LETTERS[i], value )
-	end
-	
+		
 	self.Memory = {}
 	self:ShowOutput()
 end
